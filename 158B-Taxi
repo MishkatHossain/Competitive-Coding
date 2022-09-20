@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int one = 0, two =0, three = 0, four = 0;
+
+    int  n; cin>>n;
+
+    for(int i=0; i<n; i++)
+    {
+        int x; cin>>x;
+
+        if(x==1)
+            one++;
+        if(x==2)
+            two++;
+        if(x==3)
+            three++;
+        if(x==4)
+            four++;
+    }
+
+    int c = four;   // 4 person per taxi
+
+    while(one!=0 && three!=0)   // for all 1 and 3 pairs
+    {
+        one--;
+        three--;
+        c++;
+    }
+
+    if(one==0 && three!=0)  // Adding remaining threes; Remaining ones will
+        c = c + three;      // be taken care from Line 58;
+
+
+    c = c + two/2;
+
+    if(two%2!=0)    // Remaining 2 if exist
+    {
+        if(one<=2)  // if 1 or 2 one's left
+            one = 0;
+        else
+            one = one - 2;
+
+        two = 0;
+        c++;
+    }
+
+    if(one!=0)      // all remaining ones
+    {
+        c = c + one/4;
+
+        if(one%4!=0)
+            c++;
+    }
+
+    cout << c;
+}
