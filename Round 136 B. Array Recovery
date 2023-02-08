@@ -90,6 +90,46 @@ void printSubArrays(vector<int> arr, int start, int end)
     }
 }
 
+void solve()
+{
+    int n; cin >> n;
+
+    int d[n], a[n];
+
+    cin >> d[0];
+
+    a[0] = d[0];
+
+    int k = 0;
+
+    for (int i = 1; i < n; i++)
+    {
+        cin >> d[i];
+
+        if (!k)
+        {
+            a[i] = d[i] + a[i-1];
+
+            int x = a[i-1] - d[i];
+            int y = a[i-1] + d[i];
+
+            if (x >= 0 and x != y)
+                k = 1;
+        }
+    }
+
+    if(k)
+        cout << -1 << endl;
+    else
+    {
+        for (int i = 0; i < n; i++)
+            cout << a[i] << " ";
+
+        cout << endl;
+    }
+
+}
+
 
 
 int main()
@@ -127,10 +167,19 @@ int main()
 //        cout << m << endl;
 //    }
 
-
+    w(t)
+    {
+        solve();
+    }
 
 
 }
+
+
+
+
+
+
 
 
 
